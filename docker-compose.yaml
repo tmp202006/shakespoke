@@ -1,0 +1,23 @@
+version: '3.5'
+services:
+  backend:
+    build: 
+      context: ./backend
+    ports:
+      - "3001:3001"
+    environment: 
+      - PORT_NUMBER=3001
+      - POKEMON_API_URL=https://pokeapi.co/api/v2
+      - SHAKESPEARE_API_URL=https://api.funtranslations.com
+    volumes:
+      - .:/backend
+  
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "3000:3000"
+    volumes:
+    - .:/frontend
+
+    

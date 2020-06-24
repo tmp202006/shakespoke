@@ -1,21 +1,48 @@
 .App {
+  font-size: 16px;
+  width: 100vw;
+  height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  display: block;
+  box-sizing: border-box;
+}
+.SearchWrapper {
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 16px;
   width: 100vw;
   height: 100vh;
-  font-family: Arial, Helvetica, sans-serif;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+.PokemonSearch {
+  width: 100vw;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid #d3d3d3;
+  padding-bottom: 2rem;
 }
 .SearchBox {
   width: 600px;
-  height: 400px;
   display: block;
 }
 .SearchBoxLabel {
-  font-size: 1.2rem;
+  font-size: 2rem;
   width: 100%;
   text-align: center;
+  font-weight: bold;
+  padding: 1rem;
+}
+a.HomeLink,
+a.HomeLink:visited,
+a.HomeLink:hover,
+a.HomeLink:focus,
+a.HomeLink:active {
+  text-decoration: none;
+  color: #333;
 }
 .SearchBoxInput {
   font-size: 2rem;
@@ -23,14 +50,48 @@
   padding: 0.5rem;
   border: 1px solid #d3d3d3;
   border-radius: 4px;
+  text-align: center;
+}
+.Favs {
+  font-size: 1.4rem;
+  color: #a3a3a3;
+}
+a.Fav,
+a.Fav:visited {
+  color: #a3a3a3;
+  text-decoration: none;
+}
+a.Fav:hover,
+a.Fav:active,
+a.Fav:focus {
+  color: #333;
+}
+.Pokemon {
+  padding: 2rem;
 }
 .PokemonName {
   font-size: 2.6rem;
   font-weight: bold;
+  text-transform: capitalize;
+}
+.PokemonFav {
+  color: gold;
+  margin-left: 1rem;
+  cursor: pointer;
 }
 .PokemonDescription {
   font-style: italic;
   font-weight: 100;
-  background-color: #fefefe;
+  background-color: lightgoldenrodyellow;
   border-radius: 4px;
+  padding: 1rem;
+  font-size: 2rem;
+}
+.Quote {
+  font-size: 6rem;
+  color: rgba(0, 0, 0, 0.1);
+}
+.Loading{
+  text-align: center;
+  padding: 4rem
 }

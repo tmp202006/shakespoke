@@ -2,7 +2,6 @@ package handler
 
 import (
 	"encoding/json"
-	"log"
 	"net/http"
 
 	"github.com/go-chi/chi"
@@ -14,7 +13,6 @@ import (
 func (h Handler) GetPokemon(w http.ResponseWriter, r *http.Request) {
 	pokemonName := chi.URLParam(r, "pokemon")
 
-	log.Printf("[GET Pokemon] Pokemon Name: %v", pokemonName)
 	if pokemonName == "" {
 		errorResponse := model.ErrorResponse{
 			Code:    model.ErrMissingInput,
@@ -40,7 +38,6 @@ func (h Handler) GetPokemon(w http.ResponseWriter, r *http.Request) {
 		)
 		return
 	}
-	log.Printf("[GET Pokemon] Pokemon: %v", pokemon)
 
 	// Retrieve Pokemon Species
 	species, err := h.PokemonController.GetPokemonSpecies(pokemon.Species.URL)
@@ -56,7 +53,6 @@ func (h Handler) GetPokemon(w http.ResponseWriter, r *http.Request) {
 		)
 		return
 	}
-	log.Printf("[GET Pokemon] Pokemon Species: %v", species)
 
 	if len(species.FlavorTextExtries) == 0 {
 		errorResponse := model.ErrorResponse{
@@ -86,9 +82,6 @@ func (h Handler) GetPokemon(w http.ResponseWriter, r *http.Request) {
 		)
 		return
 	}
-
-	log.Printf("[GET Pokemon] Text: %v", flavorText)
-	log.Printf("[GET Pokemon] Translation: %v", translation)
 
 	if translation.Success.Total == 0 {
 		errorResponse := model.ErrorResponse{

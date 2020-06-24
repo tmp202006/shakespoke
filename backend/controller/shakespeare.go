@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
-	"log"
 	"net/http"
 	"net/url"
 
@@ -35,7 +34,6 @@ func (sc ShakespeareController) Translate(s string) (*model.ShakespeareTranslati
 	values := url.Values{}
 	values.Add("text", s)
 	reqURL := fmt.Sprintf("%v/translate/shakespeare.json?%v", sc.apiURL, values.Encode())
-	log.Println(reqURL)
 	resp, err := http.Get(reqURL)
 	if err != nil {
 		return nil, err

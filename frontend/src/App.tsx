@@ -1,45 +1,28 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './App.css';
 import { BrowserRouter as Switch, Route } from 'react-router-dom';
-import { CachingProvider, CachingContextData } from './context/CachingContext';
-import { getFavourites } from './storage/Storage';
+// import { getFavourites } from './storage/Storage';
 import Search from './components/Search';
-import Result from './components/Result';
-import Error from './components/Error';
+import Pokemon from './components/Pokemon';
 
 function App() {
-  const [result, setResult] = useState<any>(undefined);
-  const [error, setError] = useState<any>(undefined);
-  const favs = getFavourites();
-  const cache = new CachingContextData(favs);
+  // const favs = getFavourites();
 
   return (
     <div className="App">
-      <CachingProvider value={cache}>
-        <Switch>
-          <Route exact path="/pokemon/:pokemonName">
-            Pokemon
-          </Route>
-          <Route exact path="/favourites">
-            Favourites
-          </Route>
-          <Route exact path="/">
-            <Search
-              onSuccess={(r: any) => {
-                setResult(r);
-                setError(undefined);
-              }}
-              onError={(e: any) => {
-                setResult(undefined);
-                setError(e);
-              }}
-            />
-            <Result result={result} />
-            <Error error={error} />
-          </Route>
-          <Route>Not Found</Route>
-        </Switch>
-      </CachingProvider>
+      <Switch>
+        <Route exact path="/pokemon/:pokemonName">
+          <Pokemon />
+        </Route>
+        <Route exact path="/favourites">
+          Favourites
+        </Route>
+        <Route exact path="/">
+          <div className="SearchWrapper">
+            <Search hasFavs={true} />
+          </div>
+        </Route>
+      </Switch>
     </div>
   );
 }
