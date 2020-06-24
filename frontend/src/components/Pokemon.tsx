@@ -17,7 +17,7 @@ export default function Pokemon() {
   );
 
   useEffect(() => {
-    fetch(`http://localhost:3001/pokemon/${pokemonName}`)
+    fetch(`${process.env.REACT_APP_API_URL}/pokemon/${pokemonName}`)
       .then((response) => {
         if (response.status !== 200) {
           return;

@@ -2,11 +2,6 @@
 
 This repository contains the source code for a simple application that, given a Pokemon name, displays its Shakespearian translation.
 
-## TODO
-- Toggle favs
-- UX/UI favs
-- Fix docker compose
-
 ## Quick Start
 
 [Make sure you have docker installed](https://docs.docker.com/get-docker/)
@@ -14,6 +9,8 @@ This repository contains the source code for a simple application that, given a 
 ```sh
 docker-compose up
 ```
+
+Once the build has completed, the frontend will be available at `http://localhost:3000`, while the backend will respond at `http://localhost:3001`.
 
 ## Code Structure
 
@@ -30,10 +27,13 @@ If you want to run the project locally, or if only one of the two parts is requi
 
 - Have Go 1.14 installed: https://golang.org/doc/install
 - Have the project properly configured in `GOPATH`: https://golang.org/doc/gopath_code.html
-- Fill and source a valid environment file (check `backend/.env.template`), by providing a valid value for `PORT`, `POKEMON_API_URL`, and `SHAKESPEARE_API_URL`.
+- Fill and source a valid environment file (check `backend/.env.template`), by providing a valid value for `PORT`, `POKEMON_API_URL`, and `SHAKESPEARE_API_URL`, or set them independently.
 - Run the start command
 
 ```sh
+export PORT=3001
+export POKEMON_API_URL="https://pokeapi.co/api/v2"
+export SHAKESPEARE_API_URL="https://api.funtranslations.com"
 go run main.go
 ```
 
@@ -53,3 +53,28 @@ Note:
 npm install
 npm start
 ```
+
+## TEsting
+
+## Missing
+
+Some part of the project should be improved in order to make this a production ready app:
+
+Frontend:
+
+- Health checks for verifying that backend is up and running
+- Add unit tests
+- Add e2e tests
+- Multi-platform
+- Handle all status codes from backend
+
+Backend:
+
+- Handle remote services downtimes
+- Test handlers by using mocks
+
+Overall
+
+- Improve input validation
+- Review code structure
+- CI/CD
