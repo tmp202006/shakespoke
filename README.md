@@ -54,7 +54,22 @@ npm install
 npm start
 ```
 
-## TEsting
+## Testing
+
+Tests can be run as follows:
+
+Frontend
+
+```sh
+cd frontend
+npm test
+```
+
+Backend
+
+```sh
+go test -mod=vendor ./...
+```
 
 ## Missing
 
